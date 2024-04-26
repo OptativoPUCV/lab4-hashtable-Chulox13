@@ -152,7 +152,7 @@ Pair * firstMap(HashMap * map)
 Pair * nextMap(HashMap * map) 
 {
   if (map->current == -1) {
-    return firstMap(map);
+    return NULL;
   }
 
   // Avanzar al siguiente índice circularmente a partir del índice current
