@@ -161,6 +161,5 @@ Pair * nextMap(HashMap * map)
   map->current = index;
   
   return (index != map->current) ? map->buckets[index] : NULL;
-  
-  return NULL;
+
 }
