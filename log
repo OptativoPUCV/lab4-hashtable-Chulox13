@@ -189,3 +189,38 @@ hashmap.c:72:6: error: ‘HashMap’ {aka ‘struct HashMap’} has no member na
       |      ^~
 Compilation failed
 e5b074d
+Fri 26 Apr 2024 12:50:58 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:61:3: error: unknown type name ‘hashElem’
+   61 |   hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
+      |   ^~~~~~~~
+hashmap.c:61:30: error: ‘hashElem’ undeclared (first use in this function)
+   61 |   hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
+      |                              ^~~~~~~~
+hashmap.c:61:30: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:61:40: error: expected expression before ‘)’ token
+   61 |   hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
+      |                                        ^
+hashmap.c:66:14: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘hashArray’
+   66 |       if (map->hashArray[i] != NULL && map->hashArray[i]->key != -1) {
+      |              ^~
+hashmap.c:66:43: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘hashArray’
+   66 |       if (map->hashArray[i] != NULL && map->hashArray[i]->key != -1) {
+      |                                           ^~
+hashmap.c:67:34: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘hashArray’
+   67 |           int position = hash(map->hashArray[i]->key, newCapacity);
+      |                                  ^~
+hashmap.c:68:39: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘hashArray’
+   68 |           newHashArray[position] = map->hashArray[i];
+      |                                       ^~
+hashmap.c:71:11: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘hashArray’
+   71 |   free(map->hashArray);
+      |           ^~
+hashmap.c:72:6: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘hashArray’
+   72 |   map->hashArray = newHashArray;
+      |      ^~
+Compilation failed
+c65e738
