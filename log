@@ -259,3 +259,9 @@ hashmap.c:72:6: error: ‘HashMap’ {aka ‘struct HashMap’} has no member na
       |      ^~
 Compilation failed
 af86e5a
+Fri 26 Apr 2024 12:52:13 AM UTC: 
+ hashmap.c | 16 ++--------------
+ 1 file changed, 2 insertions(+), 14 deletions(-)
+ tests:  4|5
+total_score: 20/70
+9bfc333
