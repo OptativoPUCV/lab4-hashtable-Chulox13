@@ -39,21 +39,68 @@ int is_equal(void* key1, void* key2){
 }
 
 
-void insertMap(HashMap * map, char * key, void * value) {
+void insertMap(HashMap * map, char * key, void * value) 
+{
+  int index = hash(key, map->capacity);
 
+  while (map->buckets[index] != NULL && map->buckets[index]->key != NULL)
+    {
+      index = (index +1) % map->capacity;
+    }
+
+  map->buckets[index] = createPair(key, value)
+
+  map->current = index;
+  map->size++;
 
 }
+
 
 void enlarge(HashMap * map) {
-    enlarge_called = 1; //no borrar (testing purposes)
+  int newCapacity = hashMap->capacity * 2;
+  hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
+  for (int i = 0; i < newCapacity; i++) {
+      newHashArray[i] = NULL;
+  }
+  for (int i = 0; i < hashMap->capacity; i++) {
+      if (hashMap->hashArray[i] != NULL && hashMap->hashArray[i]->key != -1) {
+          int position = hash(hashMap->hashArray[i]->key, newCapacity);
+          newHashArray[position] = hashMap->hashArray[i];
+      }
+  }
+  free(hashMap->hashArray);
+  hashMap->hashArray = newHashArray;
+  hashMap->capacity = newCapacity;
+  enlarge_called = 1; //no borrar (testing purposes)
 
 
 }
 
 
-HashMap * createMap(long capacity) {
-
+HashMap * createMap(long capacity) 
+{
+  HashMap * map = (HashMap *)malloc(sizeof(HashMap));
+  if (map == NULL)
     return NULL;
+
+  map->bucktes = (Pair **)calloc(capacity, sizeof(Pair *));
+  if (map->buckets == NULL)
+  {
+    free(map);
+    return NULL;
+  }
+
+  for (int i = 0; i < capacity; i++)
+    {
+      map->buckets[i] = NULL;
+    }
+
+
+  map->size = 0;
+  map->capacity = capacity;
+  map->current = -1;
+  
+  return map;
 }
 
 void eraseMap(HashMap * map,  char * key) {    

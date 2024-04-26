@@ -2,3 +2,37 @@ Wed 24 Apr 2024 03:27:44 PM UTC:
  tests:  0|6
 total_score: 0/70
 7f84eae
+Fri 26 Apr 2024 12:44:46 AM UTC: 
+ hashmap.c | 51 +++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 49 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:51:47: error: expected ‘;’ before ‘map’
+   51 |   map->buckets[index] = createPair(key, value)
+      |                                               ^
+      |                                               ;
+   52 | 
+   53 |   map->current = index;
+      |   ~~~                                          
+hashmap.c: In function ‘enlarge’:
+hashmap.c:60:21: error: ‘hashMap’ undeclared (first use in this function); did you mean ‘HashMap’?
+   60 |   int newCapacity = hashMap->capacity * 2;
+      |                     ^~~~~~~
+      |                     HashMap
+hashmap.c:60:21: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:61:3: error: unknown type name ‘hashElem’
+   61 |   hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
+      |   ^~~~~~~~
+hashmap.c:61:30: error: ‘hashElem’ undeclared (first use in this function)
+   61 |   hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
+      |                              ^~~~~~~~
+hashmap.c:61:40: error: expected expression before ‘)’ token
+   61 |   hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
+      |                                        ^
+hashmap.c: In function ‘createMap’:
+hashmap.c:86:8: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘bucktes’; did you mean ‘buckets’?
+   86 |   map->bucktes = (Pair **)calloc(capacity, sizeof(Pair *));
+      |        ^~~~~~~
+      |        buckets
+Compilation failed
+5270b16
