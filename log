@@ -289,3 +289,9 @@ hashmap.c:153:102: error: expected statement before ‘)’ token
 cc1: all warnings being treated as errors
 Compilation failed
 bbbc818
+Fri 26 Apr 2024 01:52:27 AM UTC: 
+ hashmap.c | 53 ++++-------------------------------------------------
+ 1 file changed, 4 insertions(+), 49 deletions(-)
+ tests:  5|4
+total_score: 30/70
+93d776c
