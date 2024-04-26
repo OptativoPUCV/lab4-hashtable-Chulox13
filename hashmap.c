@@ -151,5 +151,13 @@ Pair * firstMap(HashMap * map)
 
 Pair * nextMap(HashMap * map) 
 {
-  return NULL;
+  int index = (map->current + 1) % map->capacity;
+  // Buscar el siguiente par válido a partir del nuevo índice
+  while (index != map->current && (map->buckets[index] == NULL || map->buckets[index]->key == NULL)) {
+      index = (index + 1) % map->capacity;
+  }
+  // Actualizar el índice current
+  map->current = index;
+  // Devolver el siguiente par válido encontrado, si no se encuentra, devolver NULL
+  return (index != map->current) ? map->buckets[index] : NULL;
 }
