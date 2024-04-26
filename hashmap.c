@@ -149,7 +149,18 @@ Pair * firstMap(HashMap * map)
   return NULL;
 }
 
-Pair * nextMap(HashMap * map) {
-
-    return NULL;
+Pair * nextMap(HashMap * map) 
+{
+  int index = (map->current + 1) % map->capacity;
+  
+  while (index != map->current && (map->buckets[index] == NULL || map->buckets[index]->key == NULL)) 
+  {
+    index = (index + 1) % map->capacity;
+  }
+  
+  map->current = index;
+  
+  return (index != map->current) ? map->buckets[index] : NULL;
+  
+  return NULL;
 }
