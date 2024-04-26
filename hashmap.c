@@ -165,33 +165,14 @@ Pair * firstMap(HashMap * map)
 
 Pair * nextMap(HashMap * map) 
 {
-  if (map->current == -1) {
-    return NULL;
-  }
-
-  // Avanzar al siguiente índice circularmente a partir del índice current
-  int index = (map->current + 1) % map->capacity;
-
-  // Variable para verificar si se ha recorrido todo el arreglo
-  int looped = 0;
-
-  // Buscar el siguiente par válido a partir del nuevo índice
-  while (index != map->current || !looped) {
-    // Verificar si la casilla en el nuevo índice contiene un par válido
-    if (map->buckets[index] != NULL && map->buckets[index]->key != NULL) {
-        // Actualizar el índice current
-        map->current = index;
-        // Devolver el siguiente par válido encontrado
-        return map->buckets[index];
+  for (int i = map->current + 1; i < map->capacity; i++)
+    {
+      if (map->buckets[i] != NULL)
+      {
+        map->current = 1;
+        return map->buckets[i];
+        
+      }
     }
-    // Avanzar al siguiente índice circularmente
-    index = (index + 1) % map->capacity;
-    // Si se completa una vuelta completa alrededor del arreglo, marcar la variable looped
-    if (index == (map->current + 1) % map->capacity) {
-        looped = 1;
-    }
-  }
-
-  // Si no se encontró ningún par válido después del índice actual, devolver NULL
   return NULL;
 }
