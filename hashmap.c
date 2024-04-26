@@ -98,8 +98,20 @@ void eraseMap(HashMap * map,  char * key) {
 
 Pair * searchMap(HashMap * map,  char * key) 
 {
-  
+  int index = hashFunction(key, map->capacity);
 
+  // Buscar la clave
+  while (map->buckets[index] != NULL) {
+      // Verificar si la clave coincide
+      if (strcmp(map->buckets[index]->key, key) == 0) {
+          // Actualizar el índice current
+          map->current = index;
+          // Devolver el par asociado a la clave
+          return map->buckets[index];
+      }
+      // Avanzar al siguiente índice circularmente
+      index = (index + 1) % map->capacity;
+  }
 
     return NULL;
 }
