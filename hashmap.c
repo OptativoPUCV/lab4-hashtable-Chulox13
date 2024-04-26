@@ -160,8 +160,8 @@ Pair * nextMap(HashMap * map)
   
   map->current = index;
 
-  return map->buckets[index];
+  //return map->buckets[index];
   
-  //return (index != map->current) ? map->buckets[index] : NULL;
+  return (index != map->current) ? map->buckets[index] : NULL;
 
 }
