@@ -98,7 +98,7 @@ void eraseMap(HashMap * map,  char * key) {
 
 Pair * searchMap(HashMap * map,  char * key) 
 {
-  int index = hashFunction(key, map->capacity);
+  int index = hash(key, map->capacity);
 
   // Buscar la clave
   while (map->buckets[index] != NULL) {
