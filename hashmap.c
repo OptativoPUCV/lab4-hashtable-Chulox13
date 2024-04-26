@@ -151,17 +151,5 @@ Pair * firstMap(HashMap * map)
 
 Pair * nextMap(HashMap * map) 
 {
-  int index = (map->current + 1) % map->capacity;
   
-  while (index != map->current && (map->buckets[index] == NULL || map->buckets[index]->key == NULL)) 
-  {
-    index = (index + 1) % map->capacity;
-  }
-  
-  map->current = index;
-
-  //return map->buckets[index];
-  
-  return (index != map->current) ? map->buckets[index] : NULL;
-
 }
