@@ -323,3 +323,9 @@ hashmap.c:96:15: error: implicit declaration of function ‘hashFunction’ [-We
 cc1: all warnings being treated as errors
 Compilation failed
 f9529a3
+Fri 26 Apr 2024 02:08:09 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  13|2
+total_score: 50/70
+32ef326
