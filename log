@@ -80,3 +80,42 @@ hashmap.c:86:8: error: ‘HashMap’ {aka ‘struct HashMap’} has no member na
       |        buckets
 Compilation failed
 60f0983
+Fri 26 Apr 2024 12:48:17 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:60:21: error: expected expression before ‘HashMap’
+   60 |   int newCapacity = HashMap->capacity * 2;
+      |                     ^~~~~~~
+hashmap.c:61:3: error: unknown type name ‘hashElem’
+   61 |   hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
+      |   ^~~~~~~~
+hashmap.c:61:30: error: ‘hashElem’ undeclared (first use in this function)
+   61 |   hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
+      |                              ^~~~~~~~
+hashmap.c:61:30: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:61:40: error: expected expression before ‘)’ token
+   61 |   hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
+      |                                        ^
+hashmap.c:65:23: error: expected expression before ‘HashMap’
+   65 |   for (int i = 0; i < HashMap->capacity; i++) {
+      |                       ^~~~~~~
+hashmap.c:66:11: error: expected expression before ‘HashMap’
+   66 |       if (HashMap->hashArray[i] != NULL && HashMap->hashArray[i]->key != -1) {
+      |           ^~~~~~~
+hashmap.c:67:31: error: ‘hashMap’ undeclared (first use in this function); did you mean ‘HashMap’?
+   67 |           int position = hash(hashMap->hashArray[i]->key, newCapacity);
+      |                               ^~~~~~~
+      |                               HashMap
+hashmap.c:68:36: error: expected expression before ‘HashMap’
+   68 |           newHashArray[position] = HashMap->hashArray[i];
+      |                                    ^~~~~~~
+hashmap.c:72:10: error: expected identifier or ‘(’ before ‘->’ token
+   72 |   HashMap->hashArray = newHashArray;
+      |          ^~
+hashmap.c:73:10: error: expected identifier or ‘(’ before ‘->’ token
+   73 |   HashMap->capacity = newCapacity;
+      |          ^~
+Compilation failed
+9029a19
