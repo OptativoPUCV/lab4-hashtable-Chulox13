@@ -57,20 +57,20 @@ void insertMap(HashMap * map, char * key, void * value)
 
 
 void enlarge(HashMap * map) {
-  int newCapacity = HashMap->capacity * 2;
+  int newCapacity = map->capacity * 2;
   hashElem** newHashArray = (hashElem**)malloc(sizeof(hashElem*) * newCapacity);
   for (int i = 0; i < newCapacity; i++) {
       newHashArray[i] = NULL;
   }
-  for (int i = 0; i < HashMap->capacity; i++) {
-      if (HashMap->hashArray[i] != NULL && HashMap->hashArray[i]->key != -1) {
-          int position = hash(hashMap->hashArray[i]->key, newCapacity);
-          newHashArray[position] = HashMap->hashArray[i];
+  for (int i = 0; i < map->capacity; i++) {
+      if (map->hashArray[i] != NULL && map->hashArray[i]->key != -1) {
+          int position = hash(map->hashArray[i]->key, newCapacity);
+          newHashArray[position] = map->hashArray[i];
       }
   }
-  free(hashMap->hashArray);
-  HashMap->hashArray = newHashArray;
-  HashMap->capacity = newCapacity;
+  free(map->hashArray);
+  map->hashArray = newHashArray;
+  map->capacity = newCapacity;
   enlarge_called = 1; //no borrar (testing purposes)
 
 
