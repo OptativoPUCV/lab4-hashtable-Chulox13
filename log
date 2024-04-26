@@ -271,3 +271,21 @@ Fri 26 Apr 2024 12:52:29 AM UTC:
  tests:  5|4
 total_score: 30/70
 cba09b2
+Fri 26 Apr 2024 01:40:01 AM UTC: 
+ hashmap.c | 57 ++++++++++++++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 52 insertions(+), 5 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:153:101: error: expected statement before ‘)’ token
+  153 |   while (index != map->current && (map->buckets[index] == NULL || map->buckets[index]->key == NULL))))
+      |                                                                                                     ^
+hashmap.c:153:3: error: this ‘while’ clause does not guard... [-Werror=misleading-indentation]
+  153 |   while (index != map->current && (map->buckets[index] == NULL || map->buckets[index]->key == NULL))))
+      |   ^~~~~
+hashmap.c:153:102: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘while’
+  153 |   while (index != map->current && (map->buckets[index] == NULL || map->buckets[index]->key == NULL))))
+      |                                                                                                      ^
+hashmap.c:153:102: error: expected statement before ‘)’ token
+cc1: all warnings being treated as errors
+Compilation failed
+bbbc818
